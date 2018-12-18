@@ -1,0 +1,75 @@
+{% extends "layout.html" %}
+{% block title %}
+Ürün Ekle - Sublime.
+{% endblock title %}
+{% block style %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/checkout.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/checkout_responsive.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/contact.css') }}">
+{% endblock style %}
+
+{% block content%}
+<div class="home" style="height:200px;">
+			<div class="home_container d-flex flex-column align-items-center justify-content-end">
+				<div class="home_content text-center">
+					<div class="home_title" style="color:black;font-weight:700;font-size:30px;">Ürün Güncelle</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Checkout -->
+			<div class="container">
+				<div class="row">
+                    <div class="col-lg-12">
+						<div class="billing">
+							<div class="checkout_form_container">
+								<form action="/guncelle" method="POST" id="checkout_form" class="checkout_form contact_form">
+									<div>
+										<select name="guncelleurun" id="checkout_country" class="dropdown_item_select checkout_input" require="required">
+											{% for yaz in urunler %}
+											<option value="{{yaz.id}}">{{yaz.uismi}}</option>
+											{% endfor %}
+										</select>
+									</div>
+									<div>
+										<!-- Company -->
+										<input type="text" name="uismi" id="checkout_company" placeholder="Ürün Adı" class="checkout_input">
+									</div>
+                                    <div>
+										<!-- Company -->
+										<input type="text" name="fiyat" id="checkout_company" placeholder="Ürün Fiyatı" class="checkout_input">
+									</div>
+                                    <div>
+										<!-- Company -->
+										<input type="text" name="stok" id="checkout_company" placeholder="Kaç Adet Stokta Var?" class="checkout_input">
+									</div>
+									<div>
+										<!-- Country -->
+										<select name="kategorisec" id="checkout_country" class="dropdown_item_select checkout_input" require="required">
+											{% for yaz in kategoriler %}
+											<option value="{{yaz.id}}">{{yaz.kismi}}</option>
+											{% endfor %}
+										</select>
+									</div>
+									<div>
+										<!-- Address -->
+										<input type="text" name="resim" id="checkout_address" class="checkout_input" placeholder="Resim Linki" required="required">
+									</div>
+									<div class="py-1"><button type="submit" class="button contact_button col-md-12" ><span>Güncelle</span></button></div>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+            </div>
+			<div class="container">
+				<div class="row">
+				 	<div class="col-md-12 py-1"><a href="/ekle"><button type="button" class="col-md-12 button contact_button "><span>Ürün Ekle</span></button></a></div>
+					<div class="col-md-12 py-1"><a href="/sil"><button type="button" class="button contact_button col-md-12"><span>Ürün Sil</span></button></a></div>
+				</div>
+			</div>
+{% endblock content %}
+
+{% block script %}
+<script src="{{ url_for('static',filename='js/checkout.js') }}"></script>
+{% endblock script %}

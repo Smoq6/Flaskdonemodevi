@@ -1,0 +1,55 @@
+{% extends "layout.html" %}
+{% block title %}
+{{urundetay.uismi}} - Sublime.
+{% endblock title %}
+{% block style %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/product.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/product_responsive.css') }}">
+{% endblock style %}
+
+{% block content%}
+<div class="product_details" style="padding-top:60px; padding-bottom:30px;">
+		<div class="container">
+			<div class="row details_row">
+
+				<!-- Product Image -->
+				<div class="col-lg-6">
+					<div class="details_image">
+						<div class="details_image_large"><img src="{{ urundetay.resim }}" alt=""><div class="product_extra product_new"><a href="categories.html">New</a></div></div>
+					</div>
+				</div>
+
+				<!-- Product Content -->
+				<div class="col-lg-6">
+					<div class="details_content">
+						<div class="details_name">{{urundetay.uismi}}</div>
+						<div class="details_price">{{urundetay.fiyat}} &#8378;</div>
+
+						<!-- In Stock -->
+						<div class="in_stock_container">
+							<div class="availability">Stok Durumu:</div>
+							<span>{{urundetay.stok}}</span>
+						</div>
+
+
+						<!-- Product Quantity -->
+						<div class="product_quantity_container">
+							<div class="button cart_button"><a href="/sepeteEkle/{{urundetay.id}}">Sepete Ekle</a></div>
+						</div>
+
+						<!-- Share -->
+
+					</div>
+				</div>
+			</div>
+
+
+		</div>
+	</div>
+
+
+{% endblock content%}
+
+{% block script %}
+<script src="{{ url_for('static',filename='js/product.js') }}"></script>
+{% endblock script %}

@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+{% block title %}
+Anasayfa - Sublime.
+{% endblock title %}
+{% block style%}
+{% endblock style%}
+
+{% block content%}
+<div class="products">
+		<div class="container">
+			<div class="row">
+				<div class="col">
+					<div class="product_grid">
+						<!-- Product -->
+						<div class="row">
+						{% for yaz in urunler %}
+						<div class="product col-md-3">
+							<div class="product_image"><img src="{{ yaz.resim }}" alt=""></div>
+							<div class="product_content">
+								<div class="product_title"><a href="/urun/{{yaz.id}}">{{yaz.uismi}}</a></div>
+								<div class="product_price">{{yaz.fiyat}} &#8378;</div>
+							</div>
+						</div>
+						{% endfor %}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+{% endblock content %}
+
+
+{% block script %}
+
+{% endblock script %}

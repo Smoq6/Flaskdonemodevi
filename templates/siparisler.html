@@ -1,0 +1,79 @@
+{% extends "layout.html" %}
+{% block title %}
+Sepetim - Little
+{% endblock title %}
+{% block style %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/cart.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/cart_responsive.css') }}">
+{% endblock style %}
+
+{% block content%}
+<!-- Home -->
+
+		<div class="cart_info">
+		<div class="container">
+			<div class="home_container d-flex flex-column align-items-center justify-content-end">
+				<div class="home_content text-center">
+					<div class="home_title py-3" style="color:black;font-weight:700;font-size:30px;">SEPETİM</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col">
+					<!-- Column Titles -->
+					<div class="cart_info_columns clearfix">
+						<div class="cart_info_col cart_info_col_product" style="width:355px;">Ürün</div>
+						<div class="cart_info_col cart_info_col_product" style="width:355px;">Tarih/Saat</div>
+						<div class="cart_info_col cart_info_col_price">Fiyat</div>
+						<div class="cart_info_col cart_info_col_quantity">Adet</div>
+						<div class="cart_info_col cart_info_col_total">Toplam</div>
+					</div>
+				</div>
+			</div>
+			{% for yaz in siparisler %}
+			<div class="row cart_items_row">
+				<div class="col">
+
+					<!-- Cart Item -->
+					<div class="cart_item d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-start">
+						<!-- Name -->
+						<div class="cart_item_product d-flex flex-row align-items-center justify-content-start">
+							<div class="cart_item_image">
+								<div><img style="height:160px;"src="{{ yaz.uresim }}" alt=""></div>
+							</div>
+							<div class="cart_item_name_container">
+								<div class="cart_item_name" style="margin-right:40px;margin-left:-50px; width:150px;"><a href="/urun/{{yaz.id}}">{{yaz.uismi}}</a></div>
+							</div>
+							<div class="cart_item_name_container">
+								<div class="cart_item_name" style="color:black;">{{yaz.starih}}</div>
+							</div>
+						</div>
+
+						<!-- Price -->
+						<div class="cart_item_price">{{yaz.ufiyat}} &#8378;</div>
+						<!-- Quantity -->
+						<div class="cart_item_quantity">
+							<div class="product_quantity_container">
+								<div class="product_quantity clearfix">
+									<span id="quantity_input" style="margin-left:40px;">{{yaz.uadet}}</span>
+
+
+								</div>
+							</div>
+						</div>
+						<!-- Total -->
+						<div class="cart_item_total">{{yaz.utoplam}} &#8378;</div>
+					</div>
+
+				</div>
+			</div>
+			{% endfor %}
+
+		</div>
+	</div>
+
+
+{% endblock content %}
+
+{% block script %}
+<script src="{{ url_for('static',filename='js/cart.js') }}"></script>
+{% endblock script %}
